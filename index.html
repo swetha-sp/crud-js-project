@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+      integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+      crossorigin="anonymous"
+    />
+    <title>CRUD WEBSITE</title>
+  </head>
+  <body onload="retreiveStorage ()">
+    <div class="modal fade" id="newcardmodal" tabindex="-1" aria-labelledby="newCardModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+      <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title">PLACE YOUR ORDER</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div class="mb-3">
+      <label for="fullName" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="fullName" placeholder="full name"/>
+      </div>
+      <div class="mb-3">
+      <label for="number" class="form-label">MOBILE NUMBER</label>
+      <input type="text" class="form-control" id="number" placeholder="+91 8678564534"/>
+      </div>
+      <div class="mb-3">
+        <label for="address" class="form-label">YOUR DELIVARY LOCATION</label>
+        <textarea rows ="3" class="form-control" id="address" placeholder="Delivery Location"></textarea>
+        </div>
+      <div class="mb-3">
+      <label for="pincode" class="form-label">PINCODE</label>
+      <input type="text" class="form-control" id="pincode" placeholder="pincode" />
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+      <button onclick="myOrder()" type="button" class="btn btn-primary" data-bs-dismiss="modal">
+        PLACE ORDER
+    </button>
+      </div>
+      </div>
+      </div>
+      </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://governmentjobswork.com/wp-content/uploads/2020/10/Amazon-Jobs.png"
+            alt=""
+            width="100"
+            height="24"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#index.html"
+                ><strong>Home</strong></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#orderOfDetails"
+                ><strong>My orders</strong></a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="#myCarts"
+                ><strong>My Carts</strong></a
+              >
+            </li>
+            <li>
+              <button type="button" class="btn btn-light">
+                <strong>Notify</strong>
+                <span style="background-color: darkblue" class="badge">4+</span>
+              </button>
+            </li>
+
+            <button
+              style="background-color: darkblue; color: white"
+              class="btn btn-outline-primary btn-sm"
+             
+            >
+              <i class="fas fa-user"></i><strong>Profile</strong>
+            </button>
+          </ul>
+          <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Find interesting.."
+              aria-label="Search"
+            />
+            <button
+              style="background-color: darkblue; color: white"
+              class="btn btn-outline-info"
+              type="submit"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <main class="container" >
+      <!-- main -->
+      <section class="head">
+        <div class="row">
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(255, 0, 242, 0.349)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">Pay your credit card bills on Amazon</h4>
+                <img
+                  src="https://images-eu.ssl-images-amazon.com/images/G/31/img19/AmazonPay/Boson/Sid/CCBP/DesktopGateway_CategoryCard_379x304_CCBP._SY304_CB413372299_.jpg"
+                  class="card-img-top"
+                  alt="credit-card"
+                />
+
+                <p style="color: darkblue" class="card-text">
+                  Pay now and make it yours..
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(0, 255, 221, 0.589)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">
+                  Up to 70% off | Electronics clearance..
+                </h4>
+                <img
+                  src="https://images-eu.ssl-images-amazon.com/images/G/31/img20/Events/Jup21PC-CC/DesktopGateway-cc-1x_hindi._SY304_CB640758854_.jpg"
+                  class="card-img-top"
+                  alt="credit-card"
+                />
+                <p style="color: darkblue" class="card-text">
+                  See all upcoming offers..
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(255, 0, 242, 0.349)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">Just Ask Alexa</h4>
+                <img
+                  src="data:image/jpeg;base64,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"
+                  class="card-img-top"
+                  alt="Alexa"
+                />
+                <p style="color: darkblue" class="card-text">See More..</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(0, 255, 221, 0.589)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">
+                  Up to 45% off | Top offers from Amazon Brand -
+                </h4>
+                <img
+                  src="https://m.media-amazon.com/images/G/31/AMAZON_FASHION/2020/Shopping_Pages_Marketing_Content/All_fashion.jpg"
+                  class="card-img-top"
+                  alt="Dresses"
+                />
+                <a href="./assets/dress.html" class="btn btn-link"
+                  ><strong>Shop now..</strong></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(255, 0, 242, 0.349)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">Essential Food products..</h4>
+                <img
+                  src="https://m.media-amazon.com/images/I/814gWY+drSL._AC_UL320_.jpg"
+                  class="card-img-top"
+                  alt="Dresses"
+                />
+
+                <a href="./assets/food.html" class="btn btn-link"
+                  ><strong>Shop now..</strong></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6 col-lg-4 mt-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(255, 0, 242, 0.349)"
+            >
+              <div class="card-body">
+                <h4 class="card-title">Best Glassware and DrinkWare..</h4>
+                <img
+                  src="https://m.media-amazon.com/images/I/516w2-8TE+L._AC_SY200_.jpg"
+                  class="card-img-top"
+                  alt="Dresses"
+                />
+
+                <a href="./assets/glass.html" class="btn btn-link"
+                  ><strong>Shop now..</strong></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- my carts -->
+      <section class="carts mt-5" id="myCarts">
+        <h2 class="my-carts mt-5">MY CARTS</h2>
+        <div class="row">
+          <div class="  col-12 col-md-6 col-lg-4 mt-5 mb-5">
+            <div
+              class="card"
+              style="width: 18rem; background-color: rgba(255, 0, 242, 0.349)"
+            >
+              <div class="card-body">
+                
+                <img
+                  src="https://m.media-amazon.com/images/I/81zADUFsUgS._AC_UL320_.jpg"
+                  class="card-img-top"
+                  alt="chudi"
+                />
+                <h4 class="card-title">Desingner chudi top for womens
+                </br>Rs.399
+                </h4>
+
+                <a  style="background-color: darkblue" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#newcardmodal" >Order Now.</a>
+              </div>
+              </div>
+            </div>
+            <div class="  col-12 col-md-6 col-lg-4 mt-5 mb-5">
+              <div
+                class="card"
+                style="width: 18rem; background-color: rgba(0, 255, 221, 0.589)"
+              >
+                <div class="card-body">
+                  
+                  <img
+                    src="https://m.media-amazon.com/images/I/51Vh1ZsNRiL._AC_UL320_.jpg"
+                    class="card-img-top"
+                    alt="Almonds"
+                  />
+                  <h4 class="card-title">Solimo Almonds,500g</br>
+                    Rs.709
+                  </h4>
+                  <a style="background-color: darkblue" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newcardmodal">Order Now.</a>
+                </div>
+                </div>
+              </div>
+            </div>
+            </section>
+           <!-- my orders -->
+           <section>
+             <h2 class="my-orders">MY ORDERS</h2>
+             <div  id="orderOfDetails" class="row">
+            </div>
+           </section>
+            <!-- accordian -->
+      <section class="details mt-5">
+        <div class="mb-5">
+          <h1 class="heading mt-5">Frequently Asked questions?</h1>
+          <div class="accordion mt-5" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  <strong> Why do u want to work for Amazon?</strong>
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse show"
+                aria-labelledby="headingOne"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  I want to have an impact, and believe to have the skills and
+                  experience to be ready to work for Amazon. That's why. I want
+                  to work for Amazon because the 14 leadership principles
+                  resonate with me strongly. You know, each company has some
+                  identity, vision, goals.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  <strong> What are the values of Amazon?</strong>
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Amazon is guided by four principles: customer obsession rather
+                  than competitor focus, passion for invention, commitment to
+                  operational excellence, and long-term thinking.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  <strong> What is Amazon's brand mantra?</strong>
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  Amazon slogans are as popular as the brand itself. They
+                  perfectly symbolize what the brand stands for. If you are an
+                  American, the chances are, it is the first store that pops up
+                  into your mind when you think of shopping online.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- signin -->
+      <section class="signin">
+        <div class="account mt-5">
+          <h6>See personalised recommendations</h6>
+          <button
+            style="background-color: rgb(255, 166, 0); width: 20%; color: black"
+            type="button"
+            class="btn btn-primary btn-sm"
+          >
+            <strong>Sign in</strong>
+          </button>
+          <p>New Customer?</p>
+        </div>
+        <div class="mb-5">
+          <a href="#top" class="">
+            <div class="d-grid gap-2">
+              <button
+                style="background-color: darkblue"
+                class="btn btn-primary"
+                type="button"
+              >
+                <strong>Back to top</strong>
+              </button>
+            </div>
+          </a>
+        </div>
+      </section>
+      <footer>
+      <div class="footer mt-3">
+        <h6 class="mt-3 mb-3">Made by a member@amazon.com</h6>
+      </div>
+    </footer>
+    <script src="index.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

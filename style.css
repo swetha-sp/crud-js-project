@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+.navbar{
+    position: sticky;
+    top:0;
+    z-index: 999;
+    
+}
+
+.navbar-brand{
+    width: 30%;
+}
+
+.details{
+    border-top: 8px solid black;
+}
+
+.heading{
+    text-align: center;
+}
+
+.signin{
+    border-top: 8px solid black;  
+}
+.footer{
+    text-align: center;
+    border-top: 8px solid black;
+}
+
+.carts{
+    border-top: 8px solid black;  
+    border-bottom: 8px solid black; 
+}
+.my-carts{
+    text-align: center;
+}
+.my-orders{
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+.orders{
+    border-top: 8px solid black;  
+}
+
+.card{
+    background-color: rgba(222, 184, 135, 0.411);
+}
